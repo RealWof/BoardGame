@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccc51b809d4b24448be060a02bbe830, type: 3}
+  m_Name: DiceSkinContainer
+  m_EditorClassIdentifier: 
+  skins:
+  - name: Red
+    sprites:
+    - {fileID: 21300000, guid: e9bb6b856189a3d42bceb6197647bb7b, type: 3}
+    - {fileID: 21300000, guid: 6e892e7801548784f9e37430955736a3, type: 3}
+    - {fileID: 21300000, guid: 2bf87cdcbc4d6804fb980d6349ad964f, type: 3}
+    - {fileID: 21300000, guid: 3354bddd2859e68408767daafc7e7742, type: 3}
+    - {fileID: 21300000, guid: e881d8a56891ed74b9b1a0ac29e0bb1c, type: 3}
+    - {fileID: 21300000, guid: 291deba344ff6684f96d825a8103d434, type: 3}
+  - name: White
+    sprites:
+    - {fileID: 21300000, guid: c5c0aa668be0f3e48ba2f1e832737bc1, type: 3}
+    - {fileID: 21300000, guid: 25aab57c41447a740b687fe0fe17e6c8, type: 3}
+    - {fileID: 21300000, guid: a87aca22d86db3e4a9e84ba4f546fe88, type: 3}
+    - {fileID: 21300000, guid: a5b78a90e48e4804693bcfb4669edc4d, type: 3}
+    - {fileID: 21300000, guid: 3b7aaff570a73fd44908cec4a7de0b9f, type: 3}
+    - {fileID: 21300000, guid: 4c6f44d68fcc32f499a2ca5da4f0e946, type: 3}
