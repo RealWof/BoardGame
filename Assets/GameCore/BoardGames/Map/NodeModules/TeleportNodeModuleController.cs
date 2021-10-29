@@ -9,51 +9,44 @@ namespace GameCore.BoardGames
     {
         public ModuleType ModuleType => ModuleType.Teleport;
 
-        [SerializeField] private MovementController movementController;
-        [SerializeField] private ThrowDiceProxy throwDiceProxy;
+        [SerializeField] private MovementController _movementController;
+        [SerializeField] private ThrowDiceProxy _throwDiceProxy;
 
-        private TeleportNodeModule teleportNodeModule;
+        private TeleportNodeModule _teleportNodeModule;
 
-        private PlayerContainer container;
-        private Action onComplete;
+        private PlayerContainer _container;
+        private Action _onComplete;
 
         public void OperateModule(PlayerContainer container, INodeModule nodeModule, Action onComplete)
         {
-            this.container = container;
-            this.onComplete = onComplete;
-            teleportNodeModule = (TeleportNodeModule)nodeModule;
+            _container = container;
+            _onComplete = onComplete;
 
-            if (teleportNodeModule.NeedTrowDice)
-            {
-                throwDiceProxy.ThrowDices(container, CheckTeleport);
-            }
+            _teleportNodeModule = (TeleportNodeModule)nodeModule;
+
+            if (_teleportNodeModule.NeedTrowDice)
+                _throwDiceProxy.ThrowDices(container, CheckTeleport);
             else
-            {
                 DoTeleport();
-            }
         }
 
         private void CheckTeleport(IList<int> values)
         {
             var summ = values.Sum();
             if (CanTeleport(summ))
-            {
                 DoTeleport();
-            }
             else
-            {
-                onComplete?.Invoke();
-            }
+                _onComplete?.Invoke();
         }
 
-        private bool CanTeleport(int value) => teleportNodeModule.MoreThen < value;
+        private bool CanTeleport(int value) => _teleportNodeModule.MoreThen < value;
 
         private void DoTeleport()
         {
-            var from = container.CurrentNodeIndex;
-            var to = teleportNodeModule.Link.Index;
-            movementController.Move(container.Chip, from, to, 1, onComplete);
-            container.CurrentNodeIndex = to;
+            var from = _container.CurrentNodeIndex;
+            var to = _teleportNodeModule.Link.Index;
+            _movementController.Move(_container.Chip, from, to, 1, _onComplete);
+            _container.CurrentNodeIndex = to;
         }
     }
 }

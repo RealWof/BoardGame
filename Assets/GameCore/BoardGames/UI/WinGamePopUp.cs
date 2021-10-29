@@ -8,19 +8,19 @@ namespace GameCore.BoardGames
     {
         public event System.Action OnApplyClick;
 
-        [SerializeField] private TextMeshProUGUI playerName;
-        [SerializeField] private Image skin;
-        [SerializeField] private Button apply;
+        [SerializeField] private TextMeshProUGUI _playerName;
+        [SerializeField] private Image _skin;
+        [SerializeField] private Button _apply;
 
         private void Start()
         {
-            apply.onClick.AddListener(AtApplyClick);
+            _apply.onClick.AddListener(AtApplyClick);
         }
 
         public void SetInfo(PlayerContainer container)
         {
-            playerName.text = container.PlayerInfo.Name;
-            skin.sprite = container.Chip.Skin;
+            _playerName.text = container.PlayerInfo.Name;
+            _skin.sprite = container.Chip.Skin;
         }
 
         private void AtApplyClick()

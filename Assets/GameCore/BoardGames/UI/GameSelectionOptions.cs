@@ -7,10 +7,10 @@ namespace GameCore.BoardGames
     {
         public event System.Action OnApplyClick;
         
-        [SerializeField] private Slider chipSlider;
-        [SerializeField] private Slider dicesSlider;
-        [SerializeField] private Button apply;
-        [SerializeField] private PlayerInfoPanel[] playerPanels;
+        [SerializeField] private Slider _chipSlider;
+        [SerializeField] private Slider _dicesSlider;
+        [SerializeField] private Button _apply;
+        [SerializeField] private PlayerInfoPanel[] _playerPanels;
 
         public int CountChips { get; set; } = 2;
         public int CountDices { get; set; } = 2;
@@ -19,15 +19,15 @@ namespace GameCore.BoardGames
 
         private void Start()
         {
-            chipSlider.value = CountChips;
-            dicesSlider.value = CountDices;
+            _chipSlider.value = CountChips;
+            _dicesSlider.value = CountDices;
 
             SetPlayerCount(CountChips);
 
-            chipSlider.onValueChanged.AddListener((x) => SetPlayerCount((int)x));
-            dicesSlider.onValueChanged.AddListener((x) => CountDices = (int)x);
+            _chipSlider.onValueChanged.AddListener((x) => SetPlayerCount((int)x));
+            _dicesSlider.onValueChanged.AddListener((x) => CountDices = (int)x);
 
-            apply.onClick.AddListener(AtApplyClick);
+            _apply.onClick.AddListener(AtApplyClick);
         }
 
         private void AtApplyClick()
@@ -35,7 +35,7 @@ namespace GameCore.BoardGames
             PlayerInfos = new PlayerInfo[CountChips];
             for (int i = 0; i < CountChips; i++)
             {
-                PlayerInfos[i] = playerPanels[i].GetData();
+                PlayerInfos[i] = _playerPanels[i].GetData();
             }
             OnApplyClick?.Invoke();
         }
@@ -43,9 +43,9 @@ namespace GameCore.BoardGames
         private void SetPlayerCount(int value)
         {
             CountChips = value;
-            for (int i = 0; i < playerPanels.Length; i++)
+            for (int i = 0; i < _playerPanels.Length; i++)
             {
-                playerPanels[i].gameObject.SetActive(i < value);
+                _playerPanels[i].gameObject.SetActive(i < value);
             }
         }
     }

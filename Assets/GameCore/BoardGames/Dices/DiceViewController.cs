@@ -1,6 +1,7 @@
-using GameCore.SkinSystem;
 using System.Collections.Generic;
 using UnityEngine;
+
+using GameCore.SkinSystem;
 
 namespace GameCore.BoardGames
 {
@@ -9,39 +10,36 @@ namespace GameCore.BoardGames
     /// </summary>
     public class DiceViewController : MonoBehaviour
     {
-        [SerializeField] private SkinContainer skinContainer;
-        [SerializeField] private List<DiceUI> dices;
-        [SerializeField] private GameObject diceControllerObj;
+        [SerializeField] private SkinContainer _skinContainer;
+        [SerializeField] private List<DiceUI> _dices;
+        [SerializeField] private GameObject _diceControllerObj;
 
-        private IDiceController diceController;
+        private IDiceController _diceController;
 
         private void Start()
         {
-            diceController = diceControllerObj.GetComponent<IDiceController>();
-            diceController.OnSetDiceCount += SetDices;
+            _diceController = _diceControllerObj.GetComponent<IDiceController>();
+            _diceController.OnSetDiceCount += SetDices;
             Init();
         }
 
         public void Init()
         {
-            diceController.OnSingleDiceChange += SetValue;
+            _diceController.OnSingleDiceChange += SetValue;
 
-            foreach (var item in dices)
+            foreach (var item in _dices)
             {
-                item.SetSkin(skinContainer.GetByIndex(0));
+                item.SetSkin(_skinContainer.GetByIndex(0));
             }
         }
 
-        private void SetValue(int index, int value)
-        {
-            dices[index].SetValue(value);
-        }
+        private void SetValue(int index, int value) => _dices[index].SetValue(value);
 
         private void SetDices(int count)
         {
-            for (int i = 0; i < dices.Count; i++)
+            for (int i = 0; i < _dices.Count; i++)
             {
-                dices[i].gameObject.SetActive(i < count);
+                _dices[i].gameObject.SetActive(i < count);
             }
         }
     }

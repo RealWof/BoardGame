@@ -4,52 +4,44 @@ using UnityEngine;
 
 namespace GameCore.BoardGames
 {
-    /// <summary>
-    /// ”правл€ет ходом одного игрока
-    /// </summary>
     public class TurnController : MonoBehaviour
     {
         public event System.Action OnTurnEnd;
 
-        [SerializeField] private BoardMap boardMap;
-        [SerializeField] private MovementController movementController;
-        [SerializeField] private NodeModuleProxy nodeModuleProxy;
-        [SerializeField] private ThrowDiceProxy throwDiceProxy;
+        [SerializeField] private BoardMap _boardMap;
+        [SerializeField] private MovementController _movementController;
+        [SerializeField] private NodeModuleProxy _nodeModuleProxy;
+        [SerializeField] private ThrowDiceProxy _throwDiceProxy;
 
-        private PlayerContainer container;
-        private int targetNodeIndex;
+        private PlayerContainer _container;
+        private int _targetNodeIndex;
 
-        private int currentValue;
-        public int CurrentValue => currentValue;
+        private int _currentValue;
+        public int CurrentValue => _currentValue;
 
         public void StartTurn(PlayerContainer container)
         {
-            //Debug.Log("StartTurn " + container.Ship.Root.gameObject.name);
-            this.container = container;
-
-            throwDiceProxy.ThrowDices(container, AtDicesThrown);
+            _container = container;
+            _throwDiceProxy.ThrowDices(container, AtDicesThrown);
         }
 
         private void AtDicesThrown(IList<int> values)
         {
             var summ = values.Sum();
-            targetNodeIndex = Mathf.Clamp(container.CurrentNodeIndex + summ, 0, boardMap.Count - 1);
-            movementController.Move(container.Chip, container.CurrentNodeIndex, summ, AtMoveCompleted);
+            _targetNodeIndex = Mathf.Clamp(_container.CurrentNodeIndex + summ, 0, _boardMap.Count - 1);
+            _movementController.Move(_container.Chip, _container.CurrentNodeIndex, summ, AtMoveCompleted);
         }
 
         private void AtMoveCompleted()
         {
-            //Debug.Log("AtMoveCompleted");
-            container.CurrentNodeIndex = targetNodeIndex;
-
-            var node = boardMap.GetNode(targetNodeIndex);
+            _container.CurrentNodeIndex = _targetNodeIndex;
+            var node = _boardMap.GetNode(_targetNodeIndex);
             var module = node.NodeModule;
-            nodeModuleProxy.OperateModule(container, module, OnTurnComplete);
+            _nodeModuleProxy.OperateModule(_container, module, OnTurnComplete);
         }
 
         private void OnTurnComplete()
         {
-            //Debug.Log("OnTurnComplete" + container.Ship.Root.gameObject.name);
             OnTurnEnd?.Invoke();
         }
     }

@@ -9,30 +9,12 @@ namespace GameCore.BoardGames
     [System.Serializable]
     public class DiceUI : MonoBehaviour
     {
-        [SerializeField] private Image image;
-        [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private Image _image;
 
-        private Skin skin;
+        private Skin _skin;
 
-        private int value = 0;
-        public int Value => value;
+        public void SetSkin(Skin skin) => _skin = skin;
 
-        public void SetSkin(Skin skin)
-        {
-            this.skin = skin;
-        }
-
-        public void SetValue(int value)
-        {
-            this.value = value;
-            if (image)
-            {
-                image.sprite = skin.GetByIndex(value - 1);
-            }
-            if (text)
-            {
-                text.text = value.ToString();
-            }
-        }
+        public void SetValue(int value) => _image.sprite = _skin.GetByIndex(value - 1);
     }
 }

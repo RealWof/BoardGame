@@ -6,13 +6,13 @@ namespace GameCore.BoardGames
     {
         public ModuleType ModuleType => ModuleType.Teleport;
 
-        [SerializeField] private BoardNode link;
-        [SerializeField] private bool needTrowDice;
-        [SerializeField] private int moreThen;
+        [SerializeField] private BoardNode _link;
+        [SerializeField] private bool _needTrowDice;
+        [SerializeField] private int _moreThen;
 
-        public BoardNode Link => link;
-        public bool NeedTrowDice => needTrowDice;
-        public int MoreThen => moreThen;
+        public BoardNode Link => _link;
+        public bool NeedTrowDice => _needTrowDice;
+        public int MoreThen => _moreThen;
 
     }
 }

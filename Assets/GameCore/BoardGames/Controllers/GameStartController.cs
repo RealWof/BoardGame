@@ -9,35 +9,32 @@ namespace GameCore.BoardGames
         void InitializeGame(Action<IList<PlayerInfo>, int> callback);
     }
 
-    /// <summary>
-    /// Инициатор старта игры
-    /// </summary>
     public class GameStartController : MonoBehaviour, IGameStartController
     {
-        [SerializeField] private GameSelectionOptions gameSelectionOptions;
+        [SerializeField] private GameSelectionOptions _gameSelectionOptions;
 
-        private Action<IList<PlayerInfo>, int> callback;
+        private Action<IList<PlayerInfo>, int> _callback;
 
         private void Start()
         {
-            gameSelectionOptions.OnApplyClick += AtStartApply;
-        }
-
-        private void AtStartApply()
-        {
-            callback.Invoke(gameSelectionOptions.PlayerInfos, gameSelectionOptions.CountDices);
-            ChangeActiveGameSelection(false);
+            _gameSelectionOptions.OnApplyClick += AtStartApply;
         }
 
         public void InitializeGame(Action<IList<PlayerInfo>, int> callback)
         {
-            this.callback = callback;
+            _callback = callback;
             ChangeActiveGameSelection(true);
+        }
+
+        private void AtStartApply()
+        {
+            _callback.Invoke(_gameSelectionOptions.PlayerInfos, _gameSelectionOptions.CountDices);
+            ChangeActiveGameSelection(false);
         }
 
         private void ChangeActiveGameSelection(bool active)
         {
-            gameSelectionOptions.gameObject.SetActive(active);
+            _gameSelectionOptions.gameObject.SetActive(active);
         }
     }
 }

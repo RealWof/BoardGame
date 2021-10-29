@@ -9,38 +9,38 @@ namespace GameCore.BoardGames
 {
     public class GameLoopController : MonoBehaviour
     {
-        [SerializeField] private List<Chip> chips;
+        [SerializeField] private List<Chip> _chips;
 
-        [SerializeField] private int currentID;
+        [SerializeField] private int _currentID;
 
-        [SerializeField] private WinGamePopUp winPopUp;
+        [SerializeField] private WinGamePopUp _winPopUp;
 
-        [SerializeField] private TurnController turnController;
-        [SerializeField] private GameStartController gameStartController;
-        [SerializeField] private DiceController diceController;
-        [SerializeField] private WinGameNodeModuleController winGameNodeModuleController;
-
-        private int maxCount;
-        private PlayerContainer[] containers;
-
-        private bool isWin = false;
+        [SerializeField] private TurnController _turnController;
+        [SerializeField] private GameStartController _gameStartController;
+        [SerializeField] private DiceController _diceController;
+        [SerializeField] private WinGameNodeModuleController _winGameNodeModuleController;
 
         public PlayerContainer Winner { get; private set; }
 
+        private int _maxCount;
+        private PlayerContainer[] _containers;
+
+        private bool _isWin = false;
+
         private void Start()
         {
-            turnController.OnTurnEnd += EndTurn;
-            winGameNodeModuleController.OnGameWin += OnWinGame;
-            winPopUp.OnApplyClick += NewGame;
+            _turnController.OnTurnEnd += EndTurn;
+            _winGameNodeModuleController.OnGameWin += OnWinGame;
+            _winPopUp.OnApplyClick += NewGame;
             NewGame();
         }
 
         private void NewGame()
         {
-            isWin = false;
-            winPopUp.gameObject.SetActive(false);
+            _isWin = false;
+            _winPopUp.gameObject.SetActive(false);
             ResetChipsPositions();
-            gameStartController.InitializeGame(
+            _gameStartController.InitializeGame(
                 (chips, dices) =>
                 {
                     SetChips(chips);
@@ -53,66 +53,60 @@ namespace GameCore.BoardGames
         {
             Debug.Log($"Win player [{container.PlayerInfo.Name}]");
             Winner = container;
-            isWin = true;
-            winPopUp.SetInfo(container);
-            winPopUp.gameObject.SetActive(true);
+            _isWin = true;
+            _winPopUp.SetInfo(container);
+            _winPopUp.gameObject.SetActive(true);
         }
 
         private void SetChips(IList<PlayerInfo> playerInfos)
         {
-            maxCount = playerInfos.Count;
-            containers = new PlayerContainer[maxCount];
+            _maxCount = playerInfos.Count;
+            _containers = new PlayerContainer[_maxCount];
             for (int i = 0; i < playerInfos.Count; i++)
             {
-                containers[i] = new PlayerContainer()
+                _containers[i] = new PlayerContainer()
                 {
                     CurrentNodeIndex = 0,
-                    Chip = chips[i],
+                    Chip = _chips[i],
                     PlayerInfo = playerInfos[i]
                 };
             }
-            for (int i = 0; i < chips.Count; i++)
+            for (int i = 0; i < _chips.Count; i++)
             {
-                chips[i].gameObject.SetActive(i < maxCount);
+                _chips[i].gameObject.SetActive(i < _maxCount);
             }
         }
 
-        private void ResetChipsPositions()
-        {
-            chips.ForEach(x => x.ResetPosition());
-        }
+        private void ResetChipsPositions() => _chips.ForEach(x => x.ResetPosition());
 
-        private void SetDices(int count)
-        {
-            diceController.CountDices = count;
-        }
+        private void SetDices(int count) => _diceController.CountDices = count;
 
         [Button, DisableInEditorMode]
         private void Next()
         {
-            currentID = Helpers.GetCycledID(currentID, maxCount, 1);
+            _currentID = Helpers.GetCycledID(_currentID, _maxCount, 1);
             StartTurn();
         }
 
         [Button, DisableInEditorMode]
         private void Previous()
         {
-            currentID = Helpers.GetCycledID(currentID, maxCount, -1);
+            _currentID = Helpers.GetCycledID(_currentID, _maxCount, -1);
             StartTurn();
         }
 
         [Button, DisableInEditorMode]
         private void StartTurn()
         {
-            turnController.StartTurn(containers[currentID]);
-            chips[currentID].SetSelection();
+            _turnController.StartTurn(_containers[_currentID]);
+            _chips[_currentID].SetSelection();
         }
 
         [Button, DisableInEditorMode]
         private void EndTurn()
         {
-            chips[currentID].SetDefault();
-            if (!isWin)
+            _chips[_currentID].SetDefault();
+            if (!_isWin)
                 Next();
         }
     }

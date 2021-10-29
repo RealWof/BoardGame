@@ -15,46 +15,43 @@ namespace GameCore.BoardGames
 
     public class BoardNode : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer view;
-        [SerializeField] private TextMeshProUGUI label;
+        [SerializeField] private SpriteRenderer _view;
+        [SerializeField] private TextMeshProUGUI _label;
 
-        [SerializeField] private GameObject module;
+        [SerializeField] private GameObject _module;
 
-        private INodeModule nodeModule;
-        public INodeModule NodeModule => nodeModule;
+        private INodeModule _nodeModule;
+        public INodeModule NodeModule => _nodeModule;
 
         private int index;
         public int Index => index;
 
         private void Awake()
         {
-            nodeModule = module.GetComponent<INodeModule>();
+            _nodeModule = _module.GetComponent<INodeModule>();
         }
 
         public Vector3 GetPosition() => transform.position;
 
-        public void SetSprite(Sprite sprite)
-        {
-            view.sprite = sprite;
-        }
+        public void SetSprite(Sprite sprite) => _view.sprite = sprite;
 
         public void SetIndex(int index, int max)
         {
             this.index = index;
             if (index == 0)
             {
-                label.text = "Start".Localize();
+                _label.text = "Start".Localize();
             }
             else if (index == max - 1)
             {
-                label.text = "End".Localize();
+                _label.text = "End".Localize();
             }
             else
             {
-                label.text = index.ToString();
+                _label.text = index.ToString();
             }
 #if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(label);
+            UnityEditor.EditorUtility.SetDirty(_label);
 #endif
         }
     }

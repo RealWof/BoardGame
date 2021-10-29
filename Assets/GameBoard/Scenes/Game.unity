@@ -6228,6 +6228,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
       propertyPath: m_Name
       value: MapNode (44)
       objectReference: {fileID: 0}
@@ -6411,7 +6415,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 30, y: 30}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6604,8 +6608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfe6a4a242b2d648acfb4b32ebd0b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementController: {fileID: 275046208}
-  throwDiceProxy: {fileID: 701045701}
+  _movementController: {fileID: 275046208}
+  _throwDiceProxy: {fileID: 701045701}
 --- !u!1 &268556350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6776,7 +6780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d9d613b34bb454d8514f2b2c9f35bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardMap: {fileID: 733833999}
+  _boardMap: {fileID: 733833999}
 --- !u!1001 &291759753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7533,15 +7537,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651051b5086c34a4da5def3b5f15770d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinContainer: {fileID: 11400000, guid: 3dfc4b8101a061b4090021930a2f282f, type: 2}
-  dices:
+  _skinContainer: {fileID: 11400000, guid: 3dfc4b8101a061b4090021930a2f282f, type: 2}
+  _dices:
   - {fileID: 697271048}
   - {fileID: 1614266493}
   - {fileID: 1464076119}
   - {fileID: 499152833}
   - {fileID: 301090074}
   - {fileID: 393269952}
-  diceControllerObj: {fileID: 734433884}
+  _diceControllerObj: {fileID: 734433884}
 --- !u!1001 &499152831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7795,7 +7799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5528123aa8130041a3dced3fafe66e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSelectionOptions: {fileID: 609830924}
+  _gameSelectionOptions: {fileID: 609830924}
 --- !u!1001 &512970037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8600,10 +8604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b634cdf6ee18d488243356371cc4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chipSlider: {fileID: 926206915}
-  dicesSlider: {fileID: 1036449602}
-  apply: {fileID: 1140241930}
-  playerPanels:
+  _chipSlider: {fileID: 926206915}
+  _dicesSlider: {fileID: 1036449602}
+  _apply: {fileID: 1140241930}
+  _playerPanels:
   - {fileID: 1823776684}
   - {fileID: 1830837942}
   - {fileID: 20637489}
@@ -8915,7 +8919,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
-  m_Father: {fileID: 733833998}
+  m_Father: {fileID: 733834000}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &634455237
@@ -9243,7 +9247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6277d9fac2ac994baa2915658be7412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 1293103033}
+  _button: {fileID: 1293103033}
 --- !u!1001 &697271046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9443,8 +9447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e182810552b42074c8817b2ef61717bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceController: {fileID: 734433886}
-  throwDiceController: {fileID: 679203166}
+  _diceController: {fileID: 734433886}
+  _throwDiceController: {fileID: 679203166}
 --- !u!1 &716480588
 GameObject:
   m_ObjectHideFlags: 0
@@ -9476,7 +9480,7 @@ Transform:
   m_Children:
   - {fileID: 1442847681}
   - {fileID: 640898045}
-  m_Father: {fileID: 733833998}
+  m_Father: {fileID: 733834000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &716480590
@@ -9893,7 +9897,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 30, y: 30}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9907,6 +9911,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 733834000}
   - component: {fileID: 733833998}
   - component: {fileID: 733833999}
   m_Layer: 0
@@ -9916,23 +9921,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &733833998
-Transform:
+--- !u!223 &733833998
+Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733833997}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 716480589}
-  - {fileID: 634455236}
-  - {fileID: 1854913386}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 1381994701
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!114 &733833999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9945,7 +9954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584c82c4c17962d448397ffd73c43766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes:
+  _nodes:
   - {fileID: 4044024912452703182}
   - {fileID: 125419774}
   - {fileID: 1515149453}
@@ -10015,6 +10024,28 @@ MonoBehaviour:
   - {fileID: 56498823}
   - {fileID: 595524850}
   - {fileID: 520845526}
+--- !u!224 &733834000
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733833997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 716480589}
+  - {fileID: 634455236}
+  - {fileID: 1854913386}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &734231133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10155,8 +10186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5edb2f7aa12b94bb677b29bd19f1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugResult: 0
-  isFast: 0
+  _debugResult: 0
+  _skipDiceAnim: 0
 --- !u!1001 &761887548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14205,6 +14236,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
       propertyPath: m_Name
       value: MapNode (23)
       objectReference: {fileID: 0}
@@ -14350,17 +14385,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf2d4adf5d9da140af6d26ea975f5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chips:
+  _chips:
   - {fileID: 632538187}
   - {fileID: 1183612006}
   - {fileID: 576547915}
   - {fileID: 854285115}
-  currentID: 0
-  winPopUp: {fileID: 1707770854}
-  turnController: {fileID: 1485249355}
-  gameStartController: {fileID: 510648212}
-  diceController: {fileID: 734433886}
-  winGameNodeModuleController: {fileID: 699547573}
+  _currentID: 0
+  _winPopUp: {fileID: 1707770854}
+  _turnController: {fileID: 1485249355}
+  _gameStartController: {fileID: 510648212}
+  _diceController: {fileID: 734433886}
+  _winGameNodeModuleController: {fileID: 699547573}
 --- !u!1001 &1339347547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15779,10 +15814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7467478188dc274fb57071bc0dd9c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardMap: {fileID: 733833999}
-  movementController: {fileID: 275046208}
-  nodeModuleProxy: {fileID: 1779794441}
-  throwDiceProxy: {fileID: 701045701}
+  _boardMap: {fileID: 733833999}
+  _movementController: {fileID: 275046208}
+  _nodeModuleProxy: {fileID: 1779794441}
+  _throwDiceProxy: {fileID: 701045701}
 --- !u!1001 &1485836745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15880,6 +15915,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d97008f5dfc2fc448a2a45c701622e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1493827329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1493827331}
+  - component: {fileID: 1493827330}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1493827330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493827329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d948da64102d891478a6a349619c1e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1493827331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493827329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1503686720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16205,9 +16283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721c744a1cb73b34495db5e1aee5517d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: {fileID: 1846808546}
-  needTrowDice: 0
-  moreThen: 0
+  _link: {fileID: 1846808546}
+  _needTrowDice: 0
+  _moreThen: 0
 --- !u!1001 &1525957495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16467,9 +16545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721c744a1cb73b34495db5e1aee5517d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: {fileID: 1326555257}
-  needTrowDice: 1
-  moreThen: 7
+  _link: {fileID: 1326555257}
+  _needTrowDice: 1
+  _moreThen: 7
 --- !u!1001 &1562950914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17470,9 +17548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721c744a1cb73b34495db5e1aee5517d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: {fileID: 2033274072}
-  needTrowDice: 0
-  moreThen: 0
+  _link: {fileID: 2033274072}
+  _needTrowDice: 0
+  _moreThen: 0
 --- !u!1 &1677252673
 GameObject:
   m_ObjectHideFlags: 0
@@ -17806,9 +17884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76421a3934d9bd243a115da802b75390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: {fileID: 1595815205}
-  skin: {fileID: 1995749781}
-  apply: {fileID: 59324500}
+  _playerName: {fileID: 0}
+  _skin: {fileID: 0}
+  _apply: {fileID: 0}
 --- !u!1001 &1717209359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18050,7 +18128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac37855ec99ad564bb08c72f0c3e76d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllersObj:
+  _controllersObj:
   - {fileID: 852585274}
   - {fileID: 246747468}
   - {fileID: 699547571}
@@ -18454,6 +18532,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
       propertyPath: m_Name
       value: MapNode (10)
       objectReference: {fileID: 0}
@@ -18684,7 +18766,7 @@ Transform:
   - {fileID: 1443278635}
   - {fileID: 1878970183}
   - {fileID: 1460211366}
-  m_Father: {fileID: 733833998}
+  m_Father: {fileID: 733834000}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856372660
@@ -18933,9 +19015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721c744a1cb73b34495db5e1aee5517d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: {fileID: 231445606}
-  needTrowDice: 1
-  moreThen: 7
+  _link: {fileID: 231445606}
+  _needTrowDice: 1
+  _moreThen: 10
 --- !u!1001 &1984412492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19558,6 +19640,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 671615194008026648, guid: 91a804e2568e83c4f8ad8b66c5f0f8d9, type: 3}
       propertyPath: m_Name
       value: MapNode (32)

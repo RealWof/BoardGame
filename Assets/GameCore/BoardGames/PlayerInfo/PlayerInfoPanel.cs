@@ -10,64 +10,52 @@ namespace GameCore.BoardGames
     public class PlayerInfoPanel : MonoBehaviour
     {
         [Header("Skin")]
-        [SerializeField] private SkinContainer skinContainer;
-        [SerializeField] private Image skinImage;
-        [SerializeField] private Button skinButton;
+        [SerializeField] private SkinContainer _skinContainer;
+        [SerializeField] private Image _skinImage;
+        [SerializeField] private Button _skinButton;
 
         [Header("Name")]
-        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private TMP_InputField _inputField;
 
         [Header("Type")]
-        [SerializeField] private Image typeIcon;
-        [SerializeField] private Button typeButton;
-        [SerializeField] private Sprite playerSprite;
-        [SerializeField] private Sprite botSprite;
+        [SerializeField] private Image _typeIcon;
+        [SerializeField] private Button _typeButton;
+        [SerializeField] private Sprite _playerSprite;
+        [SerializeField] private Sprite _botSprite;
 
-        private PlayerInfo playerInfo;
-        private int index;
-        private int currentSkin = 0;
-        private bool isBot;
+        private int _index;
+        private int _currentSkin = 0;
+        private bool _isBot;
 
         private void Start()
         {
-            skinButton.onClick.AddListener(AtSkinClick);
-            typeButton.onClick.AddListener(AtTypeClick);
+            _skinButton.onClick.AddListener(AtSkinClick);
+            _typeButton.onClick.AddListener(AtTypeClick);
 
-            var skin = skinContainer.GetByIndex(0);
-            skinImage.sprite = skin.GetByIndex(currentSkin);
+            var skin = _skinContainer.GetByIndex(0);
+            _skinImage.sprite = skin.GetByIndex(_currentSkin);
         }
 
-        public void SetData(PlayerInfo playerInfo, int index)
+        public PlayerInfo GetData() => new PlayerInfo()
         {
-            this.playerInfo = playerInfo;
-            this.index = index;
-        }
-
-        public PlayerInfo GetData()
-        {
-            return new PlayerInfo()
-            {
-                Name = inputField.text,
-                Index = index,
-                Skin = currentSkin,
-                IsBot = isBot,
-            };
-        }
+            Name = _inputField.text,
+            Index = _index,
+            Skin = _currentSkin,
+            IsBot = _isBot,
+        };
 
         private void AtTypeClick()
         {
-            isBot = !isBot;
-            typeIcon.sprite = isBot ? botSprite : playerSprite;
+            _isBot = !_isBot;
+            _typeIcon.sprite = _isBot ? _botSprite : _playerSprite;
         }
 
         private void AtSkinClick()
         {
-            var skin = skinContainer.GetByIndex(0);
-            var nextSkin = Helpers.GetCycledID(currentSkin, skin.Count, 1);
-            skinImage.sprite = skin.GetByIndex(nextSkin);
-            currentSkin = nextSkin;
+            var skin = _skinContainer.GetByIndex(0);
+            var nextSkin = Helpers.GetCycledID(_currentSkin, skin.Count, 1);
+            _skinImage.sprite = skin.GetByIndex(nextSkin);
+            _currentSkin = nextSkin;
         }
-
-        
     }
 }

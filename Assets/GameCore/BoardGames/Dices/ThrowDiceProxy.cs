@@ -4,44 +4,36 @@ using UnityEngine;
 
 namespace GameCore.BoardGames
 {
-    /// <summary>
-    /// Посредник для броска кубиков
-    /// </summary>
     public class ThrowDiceProxy : MonoBehaviour
     {
-        [SerializeField] private DiceController diceController;
-        [SerializeField] private ThrowDiceController throwDiceController;
+        [SerializeField] private DiceController _diceController;
+        [SerializeField] private ThrowDiceController _throwDiceController;
 
-        private Action<IList<int>> callback;
+        private Action<IList<int>> _callback;
 
-        /// <summary>
-        /// Метод броска кубиков, принимает информацию о бросающем и куда передать значения
-        /// Если бросает игрок, то отдается управление кнопке броска
-        /// Если бросает бот, то вызывается бросок, без кнопки.
-        /// </summary>
         public void ThrowDices(PlayerContainer container, Action<IList<int>> callback)
         {
-            this.callback = callback;
-            diceController.OnEnd += AtDicesThrown;
+            _callback = callback;
+            _diceController.OnEnd += AtDicesThrown;
             if (container.PlayerInfo.IsBot)
             {
-                diceController.Go();
+                _diceController.Go();
             }
             else
             {
-                throwDiceController.SetCallback(() =>
+                _throwDiceController.SetCallback(() =>
                 {
-                    diceController.Go();
-                    throwDiceController.SetButtonActive(false);
+                    _diceController.Go();
+                    _throwDiceController.SetButtonActive(false);
                 });
-                throwDiceController.SetButtonActive(true);
+                _throwDiceController.SetButtonActive(true);
             }
         }
 
         private void AtDicesThrown(IList<int> values)
         {
-            diceController.OnEnd -= AtDicesThrown;
-            callback?.Invoke(values);
+            _diceController.OnEnd -= AtDicesThrown;
+            _callback?.Invoke(values);
         }
     }
 }

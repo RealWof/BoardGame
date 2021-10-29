@@ -6,10 +6,10 @@ namespace GameCore.BoardGames
 {
     public class ScorePanelUI : MonoBehaviour
     {
-        [SerializeField] private Sprite[] mainSprites;
-        [SerializeField] private Image mainImage;
-        [SerializeField] private TextMeshProUGUI playerName;
-        [SerializeField] private TextMeshProUGUI score;
-        [SerializeField] private TextMeshProUGUI energy;
+        [SerializeField] private Sprite[] _mainSprites;
+        [SerializeField] private Image _mainImage;
+        [SerializeField] private TextMeshProUGUI _playerName;
+        [SerializeField] private TextMeshProUGUI _score;
+        [SerializeField] private TextMeshProUGUI _energy;
     }
 }

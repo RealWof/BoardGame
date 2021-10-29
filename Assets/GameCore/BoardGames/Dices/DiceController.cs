@@ -7,34 +7,30 @@ using Sirenix.OdinInspector;
 
 namespace GameCore.BoardGames
 {
-    /// <summary>
-    /// Броски кубиков
-    /// </summary>
     public class DiceController : MonoBehaviour, IDiceController
     {
-        public event System.Action OnStart;
         public event System.Action<int, int> OnSingleDiceChange;
         public event System.Action<IList<int>> OnEnd;
         public event System.Action<int> OnSetDiceCount;
 
         [Header("Debug")]
-        [SerializeField] private int debugResult = 0; // выставленное значение следующего выпада
-        [SerializeField] private bool isFast = false; // пропускать ли прокрутку кубиков
+        [SerializeField] private int _debugResult = 0; // выставленное значение следующего выпада
+        [SerializeField] private bool _skipDiceAnim = false; // пропускать ли прокрутку кубиков
 
-        private int[] values;
+        private int[] _values;
 
-        private int countDices;
-        public int CountDices { get => countDices; set { countDices = value; OnSetDiceCount.Invoke(countDices); } }
+        private int _countDices;
+        public int CountDices { get => _countDices; set { _countDices = value; OnSetDiceCount.Invoke(_countDices); } }
 
         [Button, DisableInEditorMode]
         public void Go()
         {
-            StartCoroutine(GoDices(CountDices, isFast));
+            StartCoroutine(GoDices(CountDices, _skipDiceAnim));
         }
 
         private IEnumerator GoDices(int count, bool fast = false)
         {
-            values = new int[count];
+            _values = new int[count];
             var delay = 0f;
             for (int i = 0; i < count; i++)
             {
@@ -52,24 +48,24 @@ namespace GameCore.BoardGames
             yield return new WaitForSeconds(delay);
 
             // Если указано > 0, то результат будет равен заданному числу, независимо от выпавших значений
-            if (debugResult != 0)
+            if (_debugResult != 0)
             {
-                for (int i = 0; i < values.Length; i++)
+                for (int i = 0; i < _values.Length; i++)
                 {
-                    values[i] = 0;
+                    _values[i] = 0;
                 }
-                values[0] = debugResult;
+                _values[0] = _debugResult;
             }
 
-            OnEnd?.Invoke(values);
+            OnEnd?.Invoke(_values);
         }
 
         private IEnumerator Go(int index, int count, float delay)
         {
-            yield return RandomDice(count, delay, (int x) => { values[index] = x; OnSingleDiceChange?.Invoke(index, x); });
+            yield return RandomDice(count, delay, (int x) => { _values[index] = x; OnSingleDiceChange?.Invoke(index, x); });
         }
 
-        private IEnumerator RandomDice(int countChange, float delayChange, System.Action<int> action)
+        private static IEnumerator RandomDice(int countChange, float delayChange, System.Action<int> action)
         {
             WaitForSeconds wfs = new WaitForSeconds(delayChange);
             int randValue;

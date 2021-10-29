@@ -1020,11 +1020,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a24869f465aec4fa08c8563756035e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinContainer: {fileID: 11400000, guid: 6f91687799908bb4dbd39bff585bb122, type: 2}
-  skinImage: {fileID: 4452864475403850925}
-  skinButton: {fileID: 2831159353120451541}
-  inputField: {fileID: 2672905765691959920}
-  typeIcon: {fileID: 6124248767646394746}
-  typeButton: {fileID: 999264544585838931}
-  playerSprite: {fileID: 21300000, guid: 64ed8522d16f54ac19372380109a204d, type: 3}
-  botSprite: {fileID: 21300000, guid: f75afebcab6e147e0b8c58086f577a20, type: 3}
+  _skinContainer: {fileID: 11400000, guid: 6f91687799908bb4dbd39bff585bb122, type: 2}
+  _skinImage: {fileID: 4452864475403850925}
+  _skinButton: {fileID: 2831159353120451541}
+  _inputField: {fileID: 2672905765691959920}
+  _typeIcon: {fileID: 6124248767646394746}
+  _typeButton: {fileID: 999264544585838931}
+  _playerSprite: {fileID: 21300000, guid: 64ed8522d16f54ac19372380109a204d, type: 3}
+  _botSprite: {fileID: 21300000, guid: f75afebcab6e147e0b8c58086f577a20, type: 3}
